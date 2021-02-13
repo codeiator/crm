@@ -11,7 +11,7 @@ check_login();
 <head>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta charset="utf-8" />
-<title>Validate listing</title>
+<title>Potential Leads</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta content="" name="description" />
 <meta content="" name="author" />
@@ -51,40 +51,42 @@ check_login();
         <li>
           <p>Home</p> 
         </li>
-        <li><a href="#" class="active">Validate Listing</a></li>
+        <li><a href="#" class="active">Home Loan Leads</a></li>
       </ul>
       <div class="page-title"> <i class="icon-custom-left"></i>
-        <h3>Validate Listings</h3>
+        <h3>Home Loan Leads</h3>
       </div>
       <div class="clearfix"></div>
       
-      <h4> <span class="semi-bold">Tickets</span></h4>
+      <h4> <span class="semi-bold">Home Loan Leads</span></h4>
       <br>
-     <?php $rt=mysqli_query($con2,"SELECT * from buy_sell_property_list where validated=0");
+     <?php $rt=mysqli_query($con2,"SELECT users.* , home_loan.id as h_id , home_loan.name as ap_name from home_loan INNER JOIN users ON home_loan.username = users.contactNo " );
      $num=mysqli_num_rows($rt);
-if($num>0){
+             if($num>0){
 
-													while($row=mysqli_fetch_array($rt))
-													{
-                            
-													?> 
+                          while($row=mysqli_fetch_array($rt))
+                          {
+                          ?> 
       <div class="row">
         <div class="col-md-12">
           <div class="simple no-border" style="background: #fff;">
-            <div class="grid-title no-border descriptive clickable">
-              <h4 class="semi-bold"><?php echo $row['property_for'];?></h4>
-              <p >Listing By <span class="text-success bold"><?php echo $row['contactName'] ?? "NA" ;?> 
-              <?php echo $row['contactNo'] ?? "NA";?></span> - Posted on <?php echo $row['date'];?>
+            <div class="grid-title no-border descriptive">
+              <p style="font-size:15px;">Applicant Name : <span class="text-success bold"><?php echo $row['ap_name'] ?? "NA";?></span> &emsp;
+              Applied By :  <span class="text-success bold"><?php echo $row['name'];?></span> &emsp;
+              Contact Number :  <span class="text-success bold"><?php echo $row['contactNo'];?></span> &emsp;
+              
              <span class="label">
-              <a href="../awaas/property.php?p_id=<?php echo $row['p_id'];?>" target="_blank" style=""> View</a>
-             </span></p>
-              <div class="actions"> 
+              <a href="view-home-loan.php?h_id=<?php echo $row['h_id'];?>" target="_blank" style=""> Enquired Property</a>
+             </span> &emsp; Date <?php echo $row['date'];?></p>
+<!--               <div class="actions"> 
                 <a class="verify" val="<?php echo $row['p_id'];?>">
                   <i class="fa fa-check" style="color:#58d058;"></i> 
                 Verify</a> &emsp;
                 <a class="delete" val="<?php echo $row['p_id'];?>">
                   <i class="fa fa-trash" style="color:#fb6767;"></i> 
-                Delete</a>  </div>
+                Delete</a>  
+              </div> -->
+
             </div>
             <div class="grid-body  no-border" style="display:none">
               <div class="post">
@@ -165,7 +167,6 @@ if($num>0){
 <script type="text/javascript">
    $(".verify").click(function() {
      var pid = $(this).attr("val");
-
      if(confirm("Verify Listing?")){
       $.post("functions/verify-listing.php", { pid : pid }, function(res){
         if(res == 1) {
@@ -183,6 +184,7 @@ if($num>0){
      var pid = $(this).attr("val");
      if(confirm("Confirm Delete?")){
       $.post("functions/delete-listing.php", { pid : pid }, function(res){
+        alert(res);
         if(res == 1) {
           location.href = "";
         } else {

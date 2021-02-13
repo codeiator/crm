@@ -60,7 +60,7 @@ check_login();
       
       <h4> <span class="semi-bold">Potential Leads</span></h4>
       <br>
-     <?php $rt=mysqli_query($con,"SELECT * from awaas.leads where leadType = 'potential'");
+     <?php $rt=mysqli_query($con2,"SELECT * from leads where leadType = 'potential'");
      $num=mysqli_num_rows($rt);
              if($num>0){
 

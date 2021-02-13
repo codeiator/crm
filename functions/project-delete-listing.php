@@ -3,7 +3,7 @@
 include "../dbconnection.php";
 $pid = $_POST['pid'];
 
-		$query = "DELETE FROM buy_sell_property_list WHERE p_id =".$pid;
+		$query = "DELETE FROM projects_add WHERE project_id =".$pid;
 
 		 if($con2->query($query)){
 

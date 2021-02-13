@@ -51,14 +51,30 @@ include("dbconnection.php");
 		<div class="page-title">	
 			<h3>Quick Links</h3>	
       <div class="row 2col">
+
           <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom">
             <div class="tiles blue added-margin">
               <div class="tiles-body">
                 <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
-                <?php $ret=mysqli_query($con,"SELECT * from awaas.buy_sell_property_list where vaildated=0");
-				$num=mysqli_num_rows($ret);
-				?>
-                <div class="heading"> (<span class="animate-number" data-value="<?php echo $num;?>" data-animation-duration="1200">0</span>) <br> <a href="view-tickets.php" style="color:#FFF"> Validate Listings </a></div>
+                <?php 
+                  $sql="SELECT * from buy_sell_property_list pro,users u where u.contactNo = pro.contactNo AND validated= 0 ";
+                  $rowcount = 0; ;
+                  if ($result=mysqli_query($con2,$sql))
+                    {
+                      $rowcount=mysqli_num_rows($result);
+                     
+                    }   
+
+                    // $sql="SELECT * from buy_sell_land_property_list pro,users u where u.contactNo = pro.contactNo AND validated= 0 ";
+  
+                    // if ($result=mysqli_query($con2,$sql))
+                    //   {
+                    //     $rowcount= $rowcount + mysqli_num_rows($result);
+                      
+                    // } 
+      
+				        ?>
+                <div class="heading"> (<span class="animate-number" data-value="<?php echo $rowcount;?>" data-animation-duration="1200">0</span>) <br> <a href="view-tickets.php" style="color:#FFF"> Validate Property List </a></div>
                 
                 <div class="progress transparent progress-small no-radius">
                   <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="26.8%"></div>
@@ -67,6 +83,32 @@ include("dbconnection.php");
               </div>
             </div>
           </div>
+
+
+          <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom">
+            <div class="tiles blue added-margin">
+              <div class="tiles-body">
+                <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                <?php 
+                  $sql="SELECT * from projects_add project ,users u where u.contactNo = project.username AND  validated= 0 ";
+                  $project = 0; ;
+                  if ($result=mysqli_query($con2,$sql))
+                    {
+                      $project = mysqli_num_rows($result);
+                     
+                    }   
+      
+				        ?>
+                <div class="heading"> (<span class="animate-number" data-value="<?php echo $project;?>" data-animation-duration="1200">0</span>) <br> <a href="view-project.php" style="color:#FFF"> Validate Project List </a></div>
+                
+                <div class="progress transparent progress-small no-radius">
+                  <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="26.8%"></div>
+                </div>
+             
+              </div>
+            </div>
+          </div>
+
           <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom">
             <div class="tiles green added-margin">
               <div class="tiles-body">
@@ -82,6 +124,7 @@ include("dbconnection.php");
               </div>
             </div>
           </div>
+
           <div class="col-md-3 col-sm-6 spacing-bottom">
             <div class="tiles red added-margin">
               <div class="tiles-body">
@@ -99,22 +142,7 @@ include("dbconnection.php");
           </div>
 
 
-          <div class="col-md-3 col-sm-6">
-            <div class="tiles purple added-margin">
-              <div class="tiles-body">
-                <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
-                
-                <div class="row-fluid">
-                  <div class="heading"> <span class="fa fa-home"></span>
-                 <br> <a href="home-loan-leads.php" style="color:#FFF">Home Loan Leads </a>
-                   </div>
-                  <div class="progress transparent progress-white progress-small no-radius">
-                    <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="12%"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
 
         </div>
         
@@ -152,7 +180,7 @@ include("dbconnection.php");
               </div>
             </div>
           </div>
-          <div class="col-md-3 col-sm-6 spacing-bottom">
+          <!-- <div class="col-md-3 col-sm-6 spacing-bottom">
             <div class="tiles red added-margin">
               <div class="tiles-body">
                 <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
@@ -164,6 +192,23 @@ include("dbconnection.php");
                   <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="45%" ></div>
                 </div>
                
+              </div>
+            </div>
+          </div> -->
+
+          <div class="col-md-3 col-sm-6">
+            <div class="tiles purple added-margin">
+              <div class="tiles-body">
+                <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                
+                <div class="row-fluid">
+                  <div class="heading"> <span class="fa fa-home"></span>
+                 <br> <a href="home-loan-leads.php" style="color:#FFF">Home Loan Leads </a>
+                   </div>
+                  <div class="progress transparent progress-white progress-small no-radius">
+                    <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="12%"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -188,6 +233,27 @@ include("dbconnection.php");
 
         </div>
 
+        <div class="row 2col">
+          <div class="col-md-3 col-sm-6">
+              <div class="tiles purple added-margin">
+                <div class="tiles-body">
+                  <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                  
+                  <div class="row-fluid">
+                    <div class="heading"> <span class="fa fa-home"></span>
+                  <br> <a href="home-loan-apply-leads.php" style="color:#FFF">Home Loan  Apply </a>
+                    </div>
+                    <div class="progress transparent progress-white progress-small no-radius">
+                      <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="12%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+  
 
 
 		</div>

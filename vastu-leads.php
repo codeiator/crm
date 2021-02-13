@@ -60,7 +60,7 @@ check_login();
       
       <h4> <span class="semi-bold">Vastu Leads</span></h4>
       <br>
-     <?php $rt=mysqli_query($con,"SELECT * from awaas.vastuleads");
+     <?php $rt=mysqli_query($con2,"SELECT * from vastuleads");
      $num=mysqli_num_rows($rt);
              if($num>0){
 

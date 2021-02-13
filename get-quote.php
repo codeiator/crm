@@ -54,6 +54,8 @@ $_SESSION['msg']="Query Send";
 <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/responsive.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/custom-icon-set.css" rel="stylesheet" type="text/css"/>
+
+
 </head>
 <body class="">
 <?php include("header.php");?>
@@ -256,6 +258,11 @@ $_SESSION['msg']="Query Send";
 <script src="assets/js/core.js" type="text/javascript"></script> 
 <script src="assets/js/chat.js" type="text/javascript"></script> 
 <script src="assets/js/demo.js" type="text/javascript"></script> 
+
+        <!-- script for toastr -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+       <!-- script for toastr -->
 
 </body>
 </html>

@@ -60,7 +60,7 @@ check_login();
       
       <h4> <span class="semi-bold">Home Loan Leads</span></h4>
       <br>
-     <?php $rt=mysqli_query($con,"SELECT * from awaas.homeloanleads");
+     <?php $rt=mysqli_query($con2,"SELECT * from homeloanleads");
      $num=mysqli_num_rows($rt);
              if($num>0){
 
@@ -71,7 +71,7 @@ check_login();
         <div class="col-md-12">
           <div class="simple no-border" style="background: #fff;">
             <div class="grid-title no-border descriptive">
-              <p style="font-size:15px;"> Name : <span class="text-success bold"><?php echo $row['name'];?></span> &emsp;
+              <p style="font-size:15px;"> Name : <span class="text-success bold"><?php echo $row['name'] ?? "NA";?></span> &emsp;
               Number :  <span class="text-success bold"><?php echo $row['number'];?></span> &emsp;
                 <b><?php echo $row['amount'];?></b>
 <!--              <span class="label">

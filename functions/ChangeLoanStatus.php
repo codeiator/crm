@@ -1,9 +1,10 @@
 <?php 
 
 include "../dbconnection.php";
-$pid = $_POST['pid'];
+$status = $_POST['val'];
+$id = $_POST['id'];
 
-		$query = "UPDATE buy_sell_property_list SET validated = 1 WHERE p_id = ".$pid;
+		$query = "UPDATE home_loan SET status = ".$status." WHERE id = ".$id;
 
 		 if($con2->query($query)){
 

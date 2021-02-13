@@ -60,7 +60,7 @@ check_login();
       
       <h4> <span class="semi-bold">Tickets</span></h4>
       <br>
-     <?php $rt=mysqli_query($con2,"SELECT * from buy_sell_property_list where validated=0");
+     <?php $rt=mysqli_query($con2,"SELECT u.name as name , u.contactNo as contact , project.created_at as date , project.title as title ,project.project_id as p_id from projects_add project ,users u where u.contactNo = project.username AND validated = 0 ");
      $num=mysqli_num_rows($rt);
 if($num>0){
 
@@ -72,11 +72,11 @@ if($num>0){
         <div class="col-md-12">
           <div class="simple no-border" style="background: #fff;">
             <div class="grid-title no-border descriptive clickable">
-              <h4 class="semi-bold"><?php echo $row['property_for'];?></h4>
-              <p >Listing By <span class="text-success bold"><?php echo $row['contactName'] ?? "NA" ;?> 
-              <?php echo $row['contactNo'] ?? "NA";?></span> - Posted on <?php echo $row['date'];?>
+              <h4 class="semi-bold">Project Title : <?php echo $row['title'] ?? "NA" ;?>  </h4>
+              <p > <span class="text-success bold">
+              <?php echo $row['contact'] ?? "NA";?></span> - Posted on <?php echo $row['date'];?>
              <span class="label">
-              <a href="../awaas/property.php?p_id=<?php echo $row['p_id'];?>" target="_blank" style=""> View</a>
+              <a href="view-home-loan.php?p_id=<?php echo $row['p_id'];?>" target="_blank" style=""> View</a>
              </span></p>
               <div class="actions"> 
                 <a class="verify" val="<?php echo $row['p_id'];?>">
@@ -167,7 +167,7 @@ if($num>0){
      var pid = $(this).attr("val");
 
      if(confirm("Verify Listing?")){
-      $.post("functions/verify-listing.php", { pid : pid }, function(res){
+      $.post("functions/project-verify-listing.php", { pid : pid }, function(res){
         if(res == 1) {
           location.href = "";
         } else {
@@ -182,7 +182,7 @@ if($num>0){
    $(".delete").click(function() {
      var pid = $(this).attr("val");
      if(confirm("Confirm Delete?")){
-      $.post("functions/delete-listing.php", { pid : pid }, function(res){
+      $.post("functions/project-delete-listing.php", { pid : pid }, function(res){
         if(res == 1) {
           location.href = "";
         } else {
