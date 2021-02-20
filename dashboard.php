@@ -250,6 +250,25 @@ include("dbconnection.php");
                 </div>
               </div>
             </div>
+
+
+               
+          <div class="col-md-3 col-sm-6">
+              <div class="tiles purple added-margin">
+                <div class="tiles-body">
+                  <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                  
+                  <div class="row-fluid">
+                    <div class="heading"> <span class="fa fa-plus"></span>
+                  <br> <a href="add-blog.php" style="color:#FFF">Add Blog </a>
+                    </div>
+                    <div class="progress transparent progress-white progress-small no-radius">
+                      <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="12%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
 
 
