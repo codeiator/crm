@@ -54,7 +54,7 @@ check_login();
         <li><a href="#" class="active">Home Loan Application</a></li>
       </ul>
       <div class="page-title"> <i class="icon-custom-left"></i>
-        <h3>Home Loan Application</h3>
+        <h3>Home Loan Applicatio  n</h3>
       </div>
       <div class="clearfix"></div>
       
