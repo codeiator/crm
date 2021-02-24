@@ -29,5 +29,10 @@
                                 <li ><a href="view-tickets.php"><span class="fa fa-ticket"></span> Validate Listings</a></li>
                            
     </ul>
+
+
     
-	
+  <!-- script for toastr -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+<!-- script for toastr -->

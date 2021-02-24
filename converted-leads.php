@@ -11,7 +11,7 @@ check_login();
 <head>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta charset="utf-8" />
-<title>Potential Leads</title>
+<title>Converted Leads</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta content="" name="description" />
 <meta content="" name="author" />
@@ -51,47 +51,80 @@ check_login();
         <li>
           <p>Home</p> 
         </li>
-        <li><a href="#" class="active">Home Loan Leads</a></li>
+        <li><a href="#" class="active">Converted Leads</a></li>
       </ul>
       <div class="page-title"> <i class="icon-custom-left"></i>
-        <h3>Home Loan Leads</h3>
+        <h3>Validate Listings</h3>
       </div>
       <div class="clearfix"></div>
-
-
-
-
-
-
-      <div class="container py-8">
-    <div class="row">
-        <div class="col-md-6">
-            <form action="" method="" id="form">
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" name="title" class="form-control" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label>Author Name</label>
-                    <input type="text" name="author" class="form-control" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label>Upload File</label>
-                    <input type="file" name="file" class="form-control" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea class="form-control" name="desc" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <button id="submit" class="form-control btn btn-success " >Submit</button>
-
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
       
+      <h4> <span class="semi-bold">Converted Leads</span></h4>
+      <br>
+     <?php 
+     $rt=mysqli_query($con2,"SELECT * from leads where leadType = 'potential' and status = 4");
+
+             if($rt &&  mysqli_num_rows($rt)){
+
+													while($row=mysqli_fetch_array($rt))
+													{
+													?> 
+      <div class="row">
+        <div class="col-md-12">
+          <div class="simple no-border" style="background: #fff;">
+            <div class="grid-title no-border descriptive">
+              <p style="font-size:15px;"> Name : <span class="text-success bold"><?php echo $row['name'];?></span> &emsp;
+              Number :  <span class="text-success bold"><?php echo $row['phone'];?></span> &emsp;
+             <span class="label">
+              <a href="../awaas/property.php?p_id=<?php echo $row['propertyId'];?>" target="_blank" style=""> Enquired Property</a>
+             </span> &emsp; Date <?php echo $row['date'];?></p>
+<!--               <div class="actions"> 
+                <a class="verify" val="<?php echo $row['p_id'];?>">
+                  <i class="fa fa-check" style="color:#58d058;"></i> 
+                Verify</a> &emsp;
+                <a class="delete" val="<?php echo $row['p_id'];?>">
+                  <i class="fa fa-trash" style="color:#fb6767;"></i> 
+                Delete</a>  
+              </div> -->
+        
+
+            </div>
+            <div class="grid-body  no-border" style="display:none">
+              <div class="post">
+                
+                  <div class=""> 
+                    <span><?php echo $row['contactName'];?></span> </div>
+                
+                <div class="info-wrapper">
+                  <div class="info"><?php echo $row['ticket'];?> </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <br>
+              <div class="form-actions">
+                <div class="post col-md-12">
+                  <div class="user-profile-pic-wrapper">
+                    <div class="user-profile-pic-normal"> <img width="35" height="35" data-src-retina="userimages/admin.ico"
+                     data-src="userimages/admin.ico" src="userimages/admin.ico" alt=""> </div>
+                  </div>
+                  <div class="info-wrapper">
+ 
+                      <br>
+                      <?php echo $row['admin_remark'];?>
+                      <hr>
+                      <p class="small-text">Posted on <?php echo $row['admin_remark_date'];?></p>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+               <?php } } else {?>
+<h3 align="center" style="color:red;">No Record found</h3>
+<?php } ?>                
+          </div>
+        </div>
           </div>
         </div>
       </div>
@@ -131,6 +164,7 @@ check_login();
 <!-- END CORE TEMPLATE JS -->
 
 
+
 <script type="text/javascript">
    $(".verify").click(function() {
      var pid = $(this).attr("val");
@@ -159,12 +193,23 @@ check_login();
         }
       });
      }
-   });  
+   }); 
 
 
+
+    $("select.action-select").change(function(){
+        var d = $(this).children("option:selected").val();
+        var id = $(this).attr("data-id");
+        confirm("Do You Want To Change Action For Lead!");
+        $.post("functions/ChangePotentialStatus.php" , { id : id , status : d } , function(res){
+                toastr.success("Lead Action Updated");
+                toastr.options.timeOut = 5000;
+    })
+    });
+
+
+
+    
 </script>
-
-
-
 </body>
 </html>
