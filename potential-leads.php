@@ -60,9 +60,9 @@ check_login();
       
       <h4> <span class="semi-bold">Potential Leads</span></h4>
       <br>
-     <?php $rt=mysqli_query($con2,"SELECT * from leads where leadType = 'potential'");
-     $num=mysqli_num_rows($rt);
-             if($num>0){
+     <?php $rt=mysqli_query($con2,"SELECT * from leads where leadType = 'potential' and status != 3");
+   
+     if($rt &&  mysqli_num_rows($rt)){
 
 													while($row=mysqli_fetch_array($rt))
 													{
@@ -84,6 +84,14 @@ check_login();
                   <i class="fa fa-trash" style="color:#fb6767;"></i> 
                 Delete</a>  
               </div> -->
+              <div class="actions"> 
+                <select  class="label text-success bold action-select" data-id="<?php echo $row['id'];?>" id="action" >
+                <option value="1"  <?php if($row['status'] == 1) { echo "selected" ;} ?>>Lead Called</option>
+                <option value="2" <?php if($row['status'] == 2) { echo "selected" ;} ?>>Interested</option>
+                <option value="3" <?php if($row['status'] == 3) { echo "selected" ;} ?>>Not Interested</option>
+                <option value="4" <?php if($row['status'] == 4) { echo "selected" ;} ?>>Lead Converted</option>  
+                </select>
+              </div>
 
             </div>
             <div class="grid-body  no-border" style="display:none">
@@ -162,6 +170,7 @@ check_login();
 <!-- END CORE TEMPLATE JS -->
 
 
+
 <script type="text/javascript">
    $(".verify").click(function() {
      var pid = $(this).attr("val");
@@ -190,10 +199,23 @@ check_login();
         }
       });
      }
-   });   
+   }); 
+
+
+
+    $("select.action-select").change(function(){
+        var d = $(this).children("option:selected").val();
+        var id = $(this).attr("data-id");
+        confirm("Do You Want To Change Action For Lead!");
+        $.post("functions/ChangePotentialStatus.php" , { id : id , status : d } , function(res){
+                toastr.success("Lead Action Updated");
+                toastr.options.timeOut = 5000;
+    })
+    });
+
+
+
+    
 </script>
-
-
-
 </body>
 </html>
