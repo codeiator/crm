@@ -20,12 +20,12 @@
       <li class="start"> <a href="dashboard.php"> <i class="icon-custom-home"></i> <span class="title">Dashboard</span> <span class="selected"></span>  </a> 
 		    </li>
     
-          <li class="active"><a href="change-password.php"><span class="fa fa-file-text-o"></span> Change Password</a></li>
+          <li class=""><a href="change-password.php"><span class="fa fa-file-text-o"></span> Change Password</a></li>
                             <li><a href="profile.php"><span class="fa fa-user"></span> Profile</a></li>
                          
                             
                               <li ><a href="raw-leads.php"> <span class="fa fa-tasks"></span> Raw Leads</a></li>
-							     <li class="active"><a href="create-ticket.php"><span class="fa fa-ticket"></span> Create Ticket</a></li>
+							     <li class=""><a href="create-ticket.php"><span class="fa fa-ticket"></span> Create Ticket</a></li>
                                 <li ><a href="view-tickets.php"><span class="fa fa-ticket"></span> Validate Listings</a></li>
                            
     </ul>

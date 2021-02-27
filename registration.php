@@ -34,6 +34,7 @@ if(isset($_POST['submit']))
 <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen"/>
 <link href="assets/plugins/boostrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="assets/plugins/boostrapv3/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 <link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
@@ -250,6 +251,29 @@ function emailcheck1(str)
             </div>
           </div>
           </div>
+
+
+ <div class="row">
+          <div class="form-group col-md-10">
+            <label class="form-label">Assign Locality</label>
+            <span class="help"></span>
+            <div class="controls">
+        <div class="input-with-icon  right">                                       
+          <i class=""></i>
+          
+          <select class="selectpicker" data-live-search="true" multiple>
+            <option>Arera colony</option>
+            <option>Awadhpuri</option>
+            <option>Indrapuri</option>
+          </select>
+        </div>
+                
+            <span class="help-block"> <div style="color:#F00;" id="mb"></div></span>
+            </div>
+          </div>
+          </div>
+
+
           <div class="row">
           <div class="form-group col-md-10">
             <label class="form-label">Gender</label>
@@ -277,6 +301,7 @@ function emailcheck1(str)
 </div>
 <script src="assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 <script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
 <script src="assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="assets/js/login.js" type="text/javascript"></script>

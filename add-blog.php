@@ -51,10 +51,10 @@ check_login();
         <li>
           <p>Home</p> 
         </li>
-        <li><a href="#" class="active">Home Loan Leads</a></li>
+        <li><a href="#" class="active">Add Blog</a></li>
       </ul>
       <div class="page-title"> <i class="icon-custom-left"></i>
-        <h3>Home Loan Leads</h3>
+        <h3>Add blog</h3>
       </div>
       <div class="clearfix"></div>
 
@@ -66,28 +66,34 @@ check_login();
       <div class="container py-8">
     <div class="row">
         <div class="col-md-6">
-            <form action="" method="" id="form">
+           
                 <div class="form-group">
                     <label>Title</label>
-                    <input type="text" name="title" class="form-control" placeholder="">
+                    <input type="text" name="title" class="form-control" placeholder="Blog Title" id="title">
                 </div>
                 <div class="form-group">
                     <label>Author Name</label>
-                    <input type="text" name="author" class="form-control" placeholder="">
+                    <input type="text" name="author" class="form-control" placeholder="Author" id="author">
                 </div>
                 <div class="form-group">
-                    <label>Upload File</label>
-                    <input type="file" name="file" class="form-control" placeholder="">
+                    <label>Banner Img</label>
+                    <input type="file" name="file" class="form-control" placeholder="Banner Image" id="img">
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <textarea class="form-control" name="desc" rows="3"></textarea>
+                    <textarea class="form-control" name="desc" rows="3" id="description"></textarea>
                 </div>
+
                 <div class="form-group">
-                    <button id="submit" class="form-control btn btn-success " >Submit</button>
+                    <label>Article</label>
+                    <textarea class="form-control" name="desc" rows="3" id="content"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button id="submit" class="form-control btn btn-success">Submit</button>
 
                 </div>
-            </form>
+           
         </div>
     </div>
 </div>
@@ -164,6 +170,25 @@ check_login();
 
 </script>
 
+<script type="text/javascript">
+  $('#submit').click(function(event) {
+   var title = $('#title').val();
+   var author = $('#author').val();
+   var description = $('#description').val();
+   var content = $('#content').val();
+   var img =  "test"; //$('#img').val();
+
+   if (title && author && description && content && img) {
+       $.post('functions/addBlog.php', {title : title, author : author, description : description, content : content, img : img }, function(data) {
+
+        alert(data);
+          
+       });
+   } else {
+    alert("Please Fill all feilds");
+   }
+  });
+</script>
 
 
 </body>
