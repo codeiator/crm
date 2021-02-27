@@ -19,6 +19,18 @@ if(isset($_POST['submit']))
 	{
  mysqli_query($con,"insert into user(name,email,password,mobile,gender) values('$name','$email','$password','$mobile','$gender')");
 	$_SESSION['msg']="Successfully register with us";
+
+  if(isset($_POST['locality']))
+  {
+      foreach($_POST['locality'] as $local)
+      {
+ 
+         mysqli_query($con,"insert into assign_locality(locality_name,user_email) values('$local','$email')");
+      }
+    
+  }
+
+
 	}
 }
 ?>
@@ -260,11 +272,22 @@ function emailcheck1(str)
             <div class="controls">
         <div class="input-with-icon  right">                                       
           <i class=""></i>
-          
-          <select class="selectpicker" data-live-search="true" multiple>
-            <option>Arera colony</option>
-            <option>Awadhpuri</option>
-            <option>Indrapuri</option>
+
+          <?php
+              $sql = "SELECT * from locality";
+              $result = $con2->query($sql);
+          ?>
+        
+          <select class="selectpicker" data-live-search="true" name="locality[]" multiple>
+
+          <?php
+              while($row = $result->fetch_assoc())
+              {
+                ?>
+               <option> <?php echo $row['name'];?> </option>
+              <?php
+              }
+          ?>
           </select>
         </div>
                 
