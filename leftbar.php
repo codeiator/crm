@@ -27,6 +27,7 @@
                               <li ><a href="raw-leads.php"> <span class="fa fa-tasks"></span> Raw Leads</a></li>
 							     <li class=""><a href="create-ticket.php"><span class="fa fa-ticket"></span> Create Ticket</a></li>
                                 <li ><a href="view-tickets.php"><span class="fa fa-ticket"></span> Validate Listings</a></li>
+                                <li ><a href="add-locality.php"><span class="fa fa-ticket"></span> Add Locality</a></li>
                            
     </ul>
 
