@@ -16,7 +16,9 @@
     </div>
     <div class="header-quick-nav" >
       <div class="pull-left">
-       
+        <div class="greeting" style="font-size:14px;">
+
+        </div>
       
       </div>
       <div class="pull-right">

@@ -11,6 +11,7 @@ if($num>0)
 $_SESSION['login']=$_POST['email'];
 $_SESSION['id']=$num['id'];
 $_SESSION['name']=$num['name'];
+$_SESSION['role_id']=$num['role_id'];
 $val3 =date("Y/m/d");
 date_default_timezone_set("Asia/Calcutta");
 $time=date("h:i:sa");

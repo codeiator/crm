@@ -9,6 +9,7 @@ if(isset($_POST['submit']))
 	$password=$_POST['password'];
 	$mobile=$_POST['phone'];
 	$gender=$_POST['gender'];
+	$role=$_POST['role'];  
 	$query=mysqli_query($con,"select email from user where email='$email'");
 	$num=mysqli_fetch_array($query);
 	if($num>1)
@@ -17,7 +18,7 @@ if(isset($_POST['submit']))
 	}
 	else
 	{
- mysqli_query($con,"insert into user(name,email,password,mobile,gender) values('$name','$email','$password','$mobile','$gender')");
+ mysqli_query($con,"insert into user(name,email,password,mobile,gender,role_id) values('$name','$email','$password','$mobile','$gender' , '$role')");
 	$_SESSION['msg']="Successfully register with us";
 
   if(isset($_POST['locality']))
@@ -265,36 +266,68 @@ function emailcheck1(str)
           </div>
 
 
- <div class="row">
+        <div class="row">
           <div class="form-group col-md-10">
             <label class="form-label">Assign Locality</label>
             <span class="help"></span>
             <div class="controls">
-        <div class="input-with-icon  right">                                       
-          <i class=""></i>
+              <div class="input-with-icon  right">                                       
+                <i class=""></i>
 
-          <?php
-              $sql = "SELECT * from locality";
-              $result = $con2->query($sql);
-          ?>
-        
-          <select class="selectpicker" data-live-search="true" name="locality[]" multiple>
-
-          <?php
-              while($row = $result->fetch_assoc())
-              {
+                <?php
+                    $sql = "SELECT * from locality";
+                    $result = $con2->query($sql);
                 ?>
-               <option> <?php echo $row['name'];?> </option>
-              <?php
-              }
-          ?>
-          </select>
-        </div>
-                
-            <span class="help-block"> <div style="color:#F00;" id="mb"></div></span>
+          
+                <select class="selectpicker" data-live-search="true" name="locality[]" multiple>
+                    <?php
+                        while($row = $result->fetch_assoc())
+                        {
+                          ?>
+                        <option> <?php echo $row['name'];?> </option>
+                        <?php
+                        }
+                    ?>
+                </select>
+              </div>
+                  
+              <span class="help-block"> <div style="color:#F00;" id="mb"></div></span>
             </div>
           </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group col-md-10">
+            <label class="form-label">Assign Role</label>
+            <span class="help"></span>
+            <div class="controls">
+              <div class="input-with-icon  right">                                       
+                <i class=""></i>
+
+                <?php
+                    $sql = "SELECT * from user_role";
+                    $result = $con->query($sql);
+                ?>
+          
+                <select class="selectpicker" data-live-search="true" name="role" >
+                    <?php
+                        while($row = $result->fetch_assoc())
+                        {
+                          ?>
+                        <option value="<?php echo $row['role_id'];?>"> <?php echo $row['role_name'];?> </option>
+                        <?php
+                        }
+                    ?>
+                </select>
+              </div>
+                  
+              <span class="help-block"> <div style="color:#F00;" id="mb"></div></span>
+            </div>
           </div>
+        </div>
+
+
 
 
           <div class="row">
