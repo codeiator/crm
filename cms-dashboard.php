@@ -80,7 +80,7 @@
                     <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
                   
                     <div class="heading"> <span class="fa fa-ticket"></span>
-                    <br><a href="verify-property.php" style="color:#FFF">Verify Property</a>
+                    <br><a href="verify-property.php" style="color:#FFF">Live Properties</a>
                     </div>
                     <div class="progress transparent progress-small no-radius">
                       <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="79%" ></div>

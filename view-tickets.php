@@ -27,6 +27,12 @@ check_login();
 <link href="assets/css/responsive.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/custom-icon-set.css" rel="stylesheet" type="text/css"/>
 <!-- END CSS TEMPLATE -->
+
+
+<style type="text/css">
+.actions a { cursor: pointer; }  
+</style>
+
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -60,7 +66,7 @@ check_login();
       
       <h4> <span class="semi-bold">Tickets</span></h4>
       <br>
-     <?php $rt=mysqli_query($con2,"SELECT * from buy_sell_property_list where validated=0");
+     <?php $rt=mysqli_query($con2,"SELECT * from buy_sell_property_list where validated=0 ORDER BY id DESC");
      $num=mysqli_num_rows($rt);
 if($num>0){
 
@@ -70,59 +76,38 @@ if($num>0){
 													?> 
       <div class="row">
         <div class="col-md-12">
-          <div class="simple no-border" style="background: #fff;">
-            <div class="grid-title no-border descriptive clickable">
-              <h4 class="semi-bold"><?php echo $row['property_for'];?></h4>
-              <p >Listing By <span class="text-success bold"><?php echo $row['contactName'] ?? "NA" ;?> 
+        <div class="col-md-12" style="background: #fff; padding: 10px; margin-bottom: 15px;">
+         <h4 class="semi-bold">Property for : <?php echo $row['property_for'];?></h4>
+          <div class="col-md-12">Listing By <span class="text-success bold"><?php echo $row['contactName'] ?? "NA" ;?> 
               <?php echo $row['contactNo'] ?? "NA";?></span> - Posted on <?php echo $row['date'];?>
-             <span class="label">
-              <a href="../awaas/property.php?p_id=<?php echo $row['p_id'];?>" target="_blank" style=""> View</a>
-             </span></p>
-              <div class="actions"> 
+             <hr>
+             <div class="actions">
+              <a href="../property.php?p_id=<?php echo $row['p_id'];?>" target="_blank" style="" class="label"> 
+              View
+              </a> &emsp;
                 <a class="verify" val="<?php echo $row['p_id'];?>">
                   <i class="fa fa-check" style="color:#58d058;"></i> 
                 Verify</a> &emsp;
                 <a class="delete" val="<?php echo $row['p_id'];?>">
                   <i class="fa fa-trash" style="color:#fb6767;"></i> 
-                Delete</a>  </div>
-            </div>
-            <div class="grid-body  no-border" style="display:none">
-              <div class="post">
-                
-                  <div class=""> 
-                    <span><?php echo $row['contactName'];?></span> </div>
-                
-                <div class="info-wrapper">
-                  <div class="info"><?php echo $row['ticket'];?> </div>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="clearfix"></div>
-              </div>
-              <br>
-              <div class="form-actions">
-                <div class="post col-md-12">
-                  <div class="user-profile-pic-wrapper">
-                    <div class="user-profile-pic-normal"> <img width="35" height="35" data-src-retina="userimages/admin.ico"
-                     data-src="userimages/admin.ico" src="userimages/admin.ico" alt=""> </div>
-                  </div>
-                  <div class="info-wrapper">
- 
-                      <br>
-                      <?php echo $row['admin_remark'];?>
-                      <hr>
-                      <p class="small-text">Posted on <?php echo $row['admin_remark_date'];?></p>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-            </div>
+                Delete</a>  
+
+
+             </div>
+
+          </div>         
+        </div>
                <?php } } else {?>
 <h3 align="center" style="color:red;">No Record found</h3>
 <?php } ?>                
           </div>
         </div>
+
+
+
+
+
+
           </div>
         </div>
       </div>
