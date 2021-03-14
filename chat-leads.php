@@ -11,7 +11,7 @@ check_login();
 <head>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta charset="utf-8" />
-<title>Home Loan Application</title>
+<title>Raw Leads</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta content="" name="description" />
 <meta content="" name="author" />
@@ -51,16 +51,16 @@ check_login();
         <li>
           <p>Home</p> 
         </li>
-        <li><a href="#" class="active">Home Loan Application</a></li>
+        <li><a href="#" class="active">Chat Leads</a></li>
       </ul>
       <div class="page-title"> <i class="icon-custom-left"></i>
-        <h3>Home Loan Application</h3>
+        <h3>Chat Leads</h3>
       </div>
       <div class="clearfix"></div>
       
-      <h4> <span class="semi-bold">Application</span></h4>
+      <h4> <span class="semi-bold">Leads</span></h4>
       <br>
-     <?php $rt=mysqli_query($con2,"SELECT * from home_loan where id=".$_GET['h_id']);
+     <?php $rt=mysqli_query($con2,"SELECT * from leads where leadType='chat'");
      $num=mysqli_num_rows($rt);
 if($num>0){
 
@@ -69,87 +69,15 @@ if($num>0){
 													?> 
       <div class="row">
         <div class="col-md-12">
-
-        
-        <div class="container py-2">
-            <div class="row">
-                <div class="col">
-
-                <div class="container py-2">
-  
-    <div class="row shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="row">
-         <select class="form-control col-md-3" onchange="val()" id="select_id">
-            <option value='1'>Application Filled
-                  We Have Recieved Your Application</option>
-            <option value="2">Verification
-                  Document Verification Under Process</option>
-            <option value="3">Applied
-                  Application Submitted To Bank</option>
-            <option value="4">Loan Approved
-              Loan Has Been Granted</option>
-          </select>
+          <div class="simple no-border" style="background: #fff;">
+            <div class="grid-title no-border descriptive clickable">
+              <h4 class="semi-bold">Name : <?php echo $row['name'] ?? "Not Found";?>&nbsp;&nbsp; Mobile : <i class="fa fa-phone"></i> <?php echo $row['phone'];?></h4>
+             
+             <!--  <div class="actions"> <a class=""><i class="fa fa-check"></i> Verify</a> &emsp;
+                <a class=""><i class="fa fa-trash"></i> Delete</a>  </div> -->
             </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">Name:</label><span ><?php echo $row['name'] ?? 'NA'; ?></span>
-        </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">Father Name:</label><span><?php echo $row['father_name'] ?? 'NA'; ?></span>
-        </div>
-         <div class="col-md-6">
-           <label class="h4 px-4">Mother Name:</label><span><?php echo $row['mother_name'] ?? 'NA'; ?></span>
-        </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">Residential Status:</label><span><?php echo $row['residental_status'] ?? 'NA'; ?></span>
-        </div>
-         <div class="col-md-6">
-           <label class="h4 px-4">Pancard:</label><span><?php echo $row['pancard'] ?? 'NA'; ?></span>
-        </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">Identity:</label><span><?php echo $row['photo_id'] ?? 'NA'; ?></span>
-        </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">DOB:</label><span><?php echo $row['dob'] ?? 'NA'; ?></span>
-        </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">Gender:</label><span><?php echo $row['gender'] ?? 'NA'; ?></span>
-        </div>
-         <div class="col-md-6">
-           <label class="h4 px-4">Category:</label><span><?php echo $row['category'] ?? 'NA'; ?></span>
-        </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">Education:</label><span><?php echo $row['education'] ?? 'NA'; ?></span>
-        </div>
-         <div class="col-md-6">
-           <label class="h4 px-4">Marital Status:</label><span><?php echo $row['marital_status'] ?? 'NA'; ?></span>
-        </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">Spouse Contact:</label><span><?php echo $row['spouse_contact'] ?? 'NA'; ?></span>
-        </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">Present Address Line1:</label><span><?php echo $row['present_address_line_1'] ?? 'NA'; ?></span>
-        </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">Present Address Line2:</label><span><?php echo $row['present_address_line_2'] ?? 'NA'; ?></span>
-        </div>
-        <div class="col-md-6">
-           <label class="h4 px-4">Present City:</label><span><?php echo $row['present_city'] ?? 'NA'; ?></span>
-        </div>
-         <div class="col-md-6">
-           <label class="h4 px-4">Present Pincode:</label><span><?php echo $row['present_pincode'] ?? 'NA'; ?></span>
-        </div>
-       
-    </div>
-</div>
-                   
-                    
-                </div>
+
             </div>
-        </div>
-
-
-
-          
                <?php } } else {?>
 <h3 align="center" style="color:red;">No Record found</h3>
 <?php } ?>                
@@ -167,7 +95,7 @@ if($num>0){
     </div>
   </div>
 <!-- BEGIN CHAT --> 
-<input type="hidden" value="<?php echo $_GET['h_id']; ?>" id="h_id">
+
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN CORE JS FRAMEWORK-->
@@ -194,20 +122,3 @@ if($num>0){
 <!-- END CORE TEMPLATE JS -->
 </body>
 </html>
-
-<script>
-function val() {
-    d = document.getElementById("select_id").value;
-    var id = $("#h_id").val();
- 
-
-    $.post('functions/ChangeLoanStatus.php' , { val : d , id : id} , function(res){
-      if(res == 1)
-      {
-        toastr.success("Changed Home Loan Status");
-        toastr.options.timeOut = 2000;
-    
-      }
-    })
-}
-</script>

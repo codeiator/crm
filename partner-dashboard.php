@@ -52,13 +52,13 @@
           </div>
 
 
-          <!-- <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom">
+          <div class="col-md-3 col-sm-6 spacing-bottom-sm spacing-bottom">
             <div class="tiles green added-margin" style="background:#428bca;">
               <div class="tiles-body">
                 <div class="controller"> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
                
                 <div class="heading"> <span class="fa fa-wechat"></span>
-                <br><a href="raw-leads.php" style="color:#FFF">Chat Leads</a>
+                <br><a href="chat-leads.php" style="color:#FFF">Chat Leads</a>
                  </div>
                 <div class="progress transparent progress-small no-radius">
                   <div class="progress-bar progress-bar-white animate-progress-bar" data-percentage="79%" ></div>
@@ -69,7 +69,7 @@
           </div>
 
 
- -->
+
 
         </div>
         
