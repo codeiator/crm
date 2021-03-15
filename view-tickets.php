@@ -87,10 +87,14 @@ if($num>0){
               </a> &emsp;
                 <a class="verify" val="<?php echo $row['p_id'];?>">
                   <i class="fa fa-check" style="color:#58d058;"></i> 
-                Verify</a> &emsp;
+                Validate</a> &emsp;
                 <a class="delete" val="<?php echo $row['p_id'];?>">
                   <i class="fa fa-trash" style="color:#fb6767;"></i> 
-                Delete</a>  
+                Delete</a>
+                &emsp;
+                <a class="av-verify" val="<?php echo $row['p_id'];?>">
+                  <i class="fa fa-check-square" style="color:#58d058;"></i> 
+                Awaas Validate</a>  
 
 
              </div>
@@ -148,11 +152,26 @@ if($num>0){
 
 
 <script type="text/javascript">
+
    $(".verify").click(function() {
      var pid = $(this).attr("val");
 
      if(confirm("Verify Listing?")){
       $.post("functions/verify-listing.php", { pid : pid }, function(res){
+        if(res == 1) {
+          location.href = "";
+        } else {
+          alert("Something went Wrong, please try again later");
+        }
+      });
+     }
+   });
+
+   $(".av-verify").click(function() {
+     var pid = $(this).attr("val");
+
+     if(confirm("Awaas Verify Listing?")){
+      $.post("functions/verify-listing.php", { av_pid : pid }, function(res){
         if(res == 1) {
           location.href = "";
         } else {
