@@ -92,9 +92,7 @@ if($num>0){
                   <i class="fa fa-trash" style="color:#fb6767;"></i> 
                 Delete</a>
                 &emsp;
-                <a class="av-verify" val="<?php echo $row['p_id'];?>">
-                  <i class="fa fa-check-square" style="color:#58d058;"></i> 
-                Awaas Validate</a>  
+               
 
 
              </div>

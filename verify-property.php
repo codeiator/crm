@@ -82,7 +82,22 @@ if($num>0){
                 
                 <a class="delete" val="<?php echo $row['p_id'];?>">
                   <i class="fa fa-trash" style="color:#fb6767;"></i> 
-                Delete</a>  
+                Delete</a> 
+                &emsp;
+
+                <?php if($row['aw_validate'] == 0 ) {?>
+                            
+                 <a class="av-verify" val="<?php echo $row['p_id'];?>">
+                  <i class="fa fa-check-square" style="color:#58d058;"></i> 
+                Awaas Validate </a> 
+
+                <?php }else{ ?>  
+
+                  <a class="" val="<?php echo $row['p_id'];?>" style="color:#58d058;">
+                  <i class="fa fa-check-square" style="color:#58d058;"></i> 
+                Awaas Verified </a> 
+
+                <?php } ?>
 
 
              </div>
@@ -154,6 +169,20 @@ if($num>0){
      var pid = $(this).attr("val");
      if(confirm("Confirm Delete?")){
       $.post("functions/delete-listing.php", { pid : pid }, function(res){
+        if(res == 1) {
+          location.href = "";
+        } else {
+          alert("Something went Wrong, please try again later");
+        }
+      });
+     }
+   });
+
+      $(".av-verify").click(function() {
+     var pid = $(this).attr("val");
+
+     if(confirm("Awaas Verify Listing?")){
+      $.post("functions/verify-listing.php", { av_pid : pid }, function(res){
         if(res == 1) {
           location.href = "";
         } else {
